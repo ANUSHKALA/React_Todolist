@@ -5,8 +5,7 @@ import Todolist from './Todolist';
 
 
 ReactDOM.render(
-  
-    <Todolist />,
+  <Todolist/>,
   document.getElementById('root')
 );
 
