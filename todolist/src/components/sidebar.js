@@ -3,8 +3,13 @@ import Button from "./button";
 
 
 export default function Sidebar(){
+    
+    const sidebarstyle = {
+        width: "280px",
+        minHeight: "93.9vh",
+    }
     return(
-        <div className="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark "  style={{width: "280px"}}>
+        <div className="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark "  style={sidebarstyle}>
             <hr/>
             <ul className="nav nav-pills flex-column mb-auto">
                 <Category category="Studies"/>
