@@ -15,18 +15,6 @@ export default function Sidebar(){
             </ul>
             <Button className="btn btn-outline-info" name="+"/>
             <hr/>
-
-            <div class="dropdown">
-                <a href="#" className="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser" data-toggle="dropdown" aria-expanded="false">
-                    <strong>More</strong>
-                </a>
-                <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
-                    <More option="Settings"/>
-                    <More option="Profile"/>
-                    <li><hr className="dropdown-divider"/></li>
-                    <More option="Signout"/>
-                </ul>
-            </div>
         </div>
     );
 }
@@ -34,16 +22,11 @@ export default function Sidebar(){
 function Category(props){
     return(
       <li>
-        <a href={props.href} className="nav-link text-white">
-        <svg class="bi me-2" width="16" height="16"><use href="#grid"/></svg>
+        <a href="" className="nav-link text-white">
+        <svg class="bi me-2" width="16" height="16"><use href={props.href}/></svg>
+
         {props.category}
         </a>
       </li>
-    );
-}
-
-function More(props){
-    return(
-        <li><a className="dropdown-item" href="">{props.option}</a></li>
     );
 }
