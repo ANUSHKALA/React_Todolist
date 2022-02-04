@@ -17,16 +17,17 @@ export default function Sidebar(){
             <hr/>
 
             <div class="dropdown">
-                <a href="#" className="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser" data-toggle="dropdown" aria-expanded="false">
+                <a href="#" className="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdown" data-toggle="dropdown" aria-expanded="false">
                     <strong>More</strong>
                 </a>
-                <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
+                <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser">
                     <More option="Settings"/>
                     <More option="Profile"/>
                     <li><hr className="dropdown-divider"/></li>
                     <More option="Signout"/>
                 </ul>
             </div>
+
         </div>
     );
 }
@@ -35,7 +36,7 @@ function Category(props){
     return(
       <li>
         <a href="" className="nav-link text-white">
-        <svg class="bi me-2" width="16" height="16"><use href="#grid"/></svg>
+        <svg class="bi me-2" width="16" height="16"><use href={props.href}/></svg>
         {props.category}
         </a>
       </li>
@@ -44,6 +45,6 @@ function Category(props){
 
 function More(props){
     return(
-        <li><a className="dropdown-item" href="">{props.option}</a></li>
+        <li><a className="dropdown-item" href={props.href}>{props.option}</a></li>
     );
 }
