@@ -10,7 +10,7 @@ export default function Sidebar(){
 
 
     return(
-        <div className="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark "  style={{width: "280px", height: '100vh'}}>
+        <div className="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark "  style={{width: "280px"}}>
             <hr/>
             <ul className="nav nav-pills flex-column mb-auto">
                 <Category category="Studies"/>
