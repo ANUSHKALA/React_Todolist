@@ -28,7 +28,7 @@ function Category(props){
     return(
       <li>
         <a href="" className="nav-link text-white">
-        <svg class="bi me-2" width="16" height="16"><use href={props.href}/></svg>
+        <svg className="bi me-2" width="16" height="16"><use href={props.href}/></svg>
 
         {props.category}
         </a>
