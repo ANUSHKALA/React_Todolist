@@ -5,7 +5,7 @@ import Sidebar from "./components/sidebar";
 export default function Todolist(){
     return(
         <>
-          <Navbar/>
+          <Navbar />
             <Sidebar/>
             <Card/>
         </>
