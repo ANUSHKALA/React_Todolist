@@ -1,5 +1,6 @@
-import React from "react";
+import {React, useState} from "react";
 import Backdrop from "./Backdrop";
+import Modal from "./Modal";
 import Button from "./button";
 
 export default function Page(){
@@ -36,6 +37,18 @@ function Card(props){
         margin:"3px",
     }
 
+function buttonHandler(){
+        setModatIsOpen(true);
+      }
+    
+function closeModalHandeler(){
+        setModatIsOpen(false);
+    }
+
+
+const  [modalIsOpen, setModatIsOpen] = useState(false);
+
+
     return(
         <div className="col-md-3">
             <div className="card text-white bg-dark mb-3 box-shadow">
@@ -49,8 +62,10 @@ function Card(props){
                 <div className="row">
                     <Button className="btn btn-sm btn-success" name="DONE" style={buttonstyle} />
                     <Button className="btn btn-sm btn-warning" name="EDIT" style={buttonstyle}/>
-                    <Button className="btn btn-sm btn-danger"  name="DELETE" style={buttonstyle}/>
+                    <Button className="btn btn-sm btn-danger" onClick = {buttonHandler}  name="DELETE" style={buttonstyle}/>
                 </div>
+                {modalIsOpen && <Modal onCancel = {closeModalHandeler} onConfirm = {closeModalHandeler}/>} 
+                {/* {modalIsOpen && <Backdrop onClick = {closeModalHandeler}/>} */}
                 </div>
             </div>
         </div>

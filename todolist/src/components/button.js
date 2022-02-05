@@ -4,18 +4,6 @@ import Modal from "./Modal"
 
 export default function Button(props){
 
-    const  [modalIsOpen, setModatIsOpen] = useState(false);
-
-
-
-
-    function buttonHandler(){
-        setModatIsOpen(true);
-      }
-    
-    function closeModalHandeler(){
-        setModatIsOpen(false);
-    }
 
     return(
         <>
