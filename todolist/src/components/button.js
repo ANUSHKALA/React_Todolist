@@ -20,9 +20,9 @@ export default function Button(props){
     return(
         <>
             <div>
-                <button onClick = {buttonHandler} style={props.style} className={props.className}>{props.name}</button>
-                {modalIsOpen && <Modal onCancel = {closeModalHandeler} onConfirm = {closeModalHandeler}/>}
-                {modalIsOpen && <Backdrop onClick = {closeModalHandeler}/>}
+                <button onClick = {props.onClick} style={props.style} className={props.className}>{props.name}</button>
+                {/* {modalIsOpen && <Modal onCancel = {closeModalHandeler} onConfirm = {closeModalHandeler}/>} */}
+                {/* {modalIsOpen && <Backdrop onClick = {closeModalHandeler}/>} */}
             </div>
         </>
     );
