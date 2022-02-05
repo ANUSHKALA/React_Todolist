@@ -6,6 +6,9 @@ export const Carddata = [
 
         description: "sddsc sc chickednw cwqnvceuiwv TWTR",
 
+        state: "false",
+        
+
     },
 
     {
@@ -13,6 +16,8 @@ export const Carddata = [
         name: "Square Inc",
 
         description: "sdvsrfve rgvrsddsc sc chickednw cwqnvceuiwv SQ",
+
+        state: "true",
 
 
 
@@ -24,6 +29,8 @@ export const Carddata = [
 
         description: "trtretgt ger vgrsddsc sc chickednwrfewrg cwqnvceuiwv SHOP",
 
+        state: "false",
+
 
 
     },
@@ -34,6 +41,8 @@ export const Carddata = [
 
         description: "w4ft reqgetge sddsc sc chickednw cwqnvceuiwv RUN",
 
+        state: "false",
+
     },
 
     {
@@ -42,6 +51,8 @@ export const Carddata = [
 
         description: "xxx w fqrfgqrgv sddsc sc chickednw cwqnvceuiwv ADBE",
 
+        state: "false",
+
     },
 
     {
@@ -49,6 +60,8 @@ export const Carddata = [
         name: "HubSpot Inc",
 
         description: "zxzxc wfvrg sddsc sc chickednw cwqnvceuiwv HUBS",
+
+        state: "false",
     },
 
 ];
