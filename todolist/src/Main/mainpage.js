@@ -1,30 +1,56 @@
 import React from "react";
 import Card from "../components/card";
-import { Carddata } from "../jsondata/Json";
-import { Categorydata } from "../jsondata/Json";
+// import { this.state.task } from "../jsondata/Json";
+// import { this.state.category } from "../jsondata/Json";
 import Sidebar from "../components/sidebar";
 import Navbar from "../components/navbar";
 import Category from "../components/category";
-
-
+import axios from 'axios';
 
 class Page extends React.Component {
     
     constructor(props) {
         super(props);
         this.state = {
-          category: Categorydata[0].name,
-          categories:Categorydata,
-          cards:Carddata
+            thiscategory:1,
+            category: [],
+            task : []
         };
     }
 
-    saveStateToLocalStorage = () => { 
-        localStorage.setItem('state', JSON.stringify(this.state)); 
-    } 
+
+    componentDidMount() {
+  
+        let data ;
+
+        axios.get('http://localhost:8000/category-list/')
+        .then(res => {
+            data = res.data;
+            this.setState({
+                category : data    
+            });
+        })
+        .catch(err => {
+            console.log(err)
+        })
+     
+  
+        axios.get('http://localhost:8000/task-list/')
+        .then(res => {
+            data = res.data;
+            this.setState({
+                task : data    
+            });
+        })
+        .catch(err => {
+            console.log(err)
+        })
+        
+    }
+
 
     handleChange=(category)=>{
-        this.setState({category:category})
+        this.setState({thiscategory:category})
     }
 
 
@@ -39,15 +65,17 @@ class Page extends React.Component {
             flex: "1" 
         }
 
-        let category = this.state.category;
+
+
+        let category = this.state.thiscategory;
 
 
         let cards =[]
-        for (let i=0;i<Carddata.length;i++){
-            if (category == Carddata[i].category){
+        for (let i=0;i<this.state.task.length;i++){
+            if (category === this.state.task[i].category){
                 cards.push(
                     <div className="col-md-4">
-                        <Card title={Carddata[i].name} description={Carddata[i].description}/>
+                        <Card title={this.state.task[i].title} description={this.state.task[i].description}/>
                     </div>
                 )
             }
@@ -55,9 +83,9 @@ class Page extends React.Component {
 
         let categories = [] 
 
-        for(let i=0; i<Categorydata.length;i++){
+        for(let i=0; i<this.state.category.length;i++){
             categories.push(
-                <Category onClick={()=>this.handleChange(Categorydata[i].name)} category={Categorydata[i].name} />
+                <Category onClick={()=>this.handleChange(this.state.category[i].id)} category={this.state.category[i].name} />
             )
         }
         

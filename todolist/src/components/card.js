@@ -1,5 +1,4 @@
 import React from "react";
-import Backdrop from "./Backdrop";
 import Button from "./button";
 
 export default function Card(props){
