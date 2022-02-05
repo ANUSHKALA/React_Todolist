@@ -1,7 +1,7 @@
 import React from "react";
 import Card from "../components/card";
-import { Carddata } from "../jsondata/cards";
-import { Categorydata } from "../jsondata/category";
+import { Carddata } from "../jsondata/Json";
+import { Categorydata } from "../jsondata/Json";
 import Sidebar from "../components/sidebar";
 import Navbar from "../components/navbar";
 import Category from "../components/category";
@@ -13,9 +13,15 @@ class Page extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-          category: Categorydata[0].name
+          category: Categorydata[0].name,
+          categories:Categorydata,
+          cards:Carddata
         };
     }
+
+    saveStateToLocalStorage = () => { 
+        localStorage.setItem('state', JSON.stringify(this.state)); 
+    } 
 
     handleChange=(category)=>{
         this.setState({category:category})
@@ -54,12 +60,12 @@ class Page extends React.Component {
                 <Category onClick={()=>this.handleChange(Categorydata[i].name)} category={Categorydata[i].name} />
             )
         }
-
+        
         return (
             <>
             <Navbar/>
             <section>
-                <Sidebar categories={categories} className="sidebar"/>
+                <Sidebar onClick={this.saveStateToLocalStorage} categories={categories} className="sidebar"/>
                 <div className="card" style={cardstyle}>
                 <div className="row">
                     {cards}

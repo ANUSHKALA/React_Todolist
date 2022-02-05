@@ -19,7 +19,7 @@ export default function Sidebar(props){
                 <ul className="nav nav-pills flex-column mb-auto">
                 <li><p className="nav-link text-white"><strong>CATEGORIES</strong></p></li>
                     {props.categories}
-                    <Button className="btn btn-sm btn-outline-info" name="ADD MORE" style={buttonstyle}/>
+                    <Button onClick={props.onClick} className="btn btn-sm btn-outline-info" name="ADD MORE" style={buttonstyle}/>
                 </ul>
                 <hr/>
             </div>
