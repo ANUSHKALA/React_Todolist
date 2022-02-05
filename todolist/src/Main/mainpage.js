@@ -1,8 +1,8 @@
 import {React, useState} from "react";
 import { PropTypes } from "prop-types";
-import Backdrop from "./Backdrop";
-import Modal from "./Modal";
-import Button from "./button";
+import Backdrop from "../components/Backdrop";
+import Modal from "../components/Modal";
+import Button from "../components/button";
 import { Carddata } from "../jsondata/cards";
 
 export default function Page(){
