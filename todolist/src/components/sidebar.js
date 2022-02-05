@@ -1,9 +1,10 @@
 import React  from "react";
 import Button from "./button";
+import { Categorydata } from "../jsondata/category";
 
 
 export default function Sidebar(){
-    
+
     const buttonstyle ={
         "margin-top":"6px",
         "margin-left" : "30px"
@@ -13,20 +14,16 @@ export default function Sidebar(){
         minHeight: "100%",
     }
 
-    const categories  = [
-    <Category category="Studies"/>,
-    <Category category="Shopping list"/>,
-    <Category category="Remember this"/>,
-    <Category category="Category"/>,
-    <Category category="Category"/>
-    ]
-
 
     return(
         <div className="d-flex flex-column flex-shrink-0 p-2 text-white bg-dark "  style={sidebarstyle}>
             <hr/>
             <ul className="nav nav-pills flex-column mb-auto">
-                {categories}
+                {Categorydata.map((data, key) => {
+                    return (
+                        <Category category={data.name}/>
+                    );
+                })}
                 <Button className="btn btn-sm btn-outline-info" name="ADD MORE" style={buttonstyle}/>
             </ul>
             <hr/>

@@ -54,6 +54,7 @@ function Card(props){
         margin:"3px",
     }
 
+<<<<<<< HEAD
  function buttonHandler(){
          setModatIsOpen(true);
        }
@@ -75,13 +76,27 @@ const  [modalIsOpen, setModatIsOpen] = useState(false);
 const  [taskIsDone, setTaskIsDone] = useState(true);
 
 
+||||||| b060ef3
+=======
+    const  descriptionstyle ={
+        "overflow-y":"scroll",
+        height:"90px",
+
+    }
+
+    const titlestyle={
+        "overflow-y":"scroll",
+        height:"25px",
+    }
+
+>>>>>>> 93dd80a61863468c755f2f3d98ee9cf66750de2c
     return(
             <div className="card text-white bg-dark mb-3 box-shadow">
                 <div className="card-header" >
-                    <h5 className="card-title">{props.title}</h5>
+                    <h5 className="card-title hidescroll" style={titlestyle}>{props.title}</h5>
                 </div>
                 <div className="card-body">
-                <p className="card-text">{props.description}</p>
+                <p className="card-text hidescroll" style={descriptionstyle}>{props.description}</p>
                 </div>
                 <div className="card-footer">
                 <div className="row">
