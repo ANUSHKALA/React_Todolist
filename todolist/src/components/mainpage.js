@@ -1,8 +1,11 @@
 import React from "react";
 import Backdrop from "./Backdrop";
 import Button from "./button";
+import { Carddata } from "../jsondata/cards";
 
 export default function Page(){
+
+
     const mystyle = {
         padding :"20px",
         
@@ -16,16 +19,16 @@ export default function Page(){
         "msFlex": "1",
         flex: "1" 
     }
-
     return(
       <div className="card" style={cardstyle}>
             <div className="row">
-                <Card title="Buy chicken" description="aka kill the poor little innocent chicken:\" />
-                <Card/>
-                <Card/>
-                <Card/>
-                <Card/>
-                <Card/>
+                {Carddata.map((data,key)=>{
+                    return(
+                        <div className="col-md-3" id={key}>
+                            <Card title={data.name} description={data.description}/>
+                        </div>
+                    );
+                })}
             </div>
       </div>
     );
@@ -37,7 +40,6 @@ function Card(props){
     }
 
     return(
-        <div className="col-md-3">
             <div className="card text-white bg-dark mb-3 box-shadow">
                 <div className="card-header" >
                     <h5 className="card-title">{props.title}</h5>
@@ -53,7 +55,6 @@ function Card(props){
                 </div>
                 </div>
             </div>
-        </div>
 
     );
 }
