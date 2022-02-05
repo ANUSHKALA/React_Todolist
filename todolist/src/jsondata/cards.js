@@ -1,6 +1,6 @@
 export var Carddata = [
     {
-        name: "Twitter Inc",
+        name: "Twitter Inc erg ewgte gerg ewgetgtwergt erg erg tergetg wqrgewrg erger",
         description: "sddsc sc chickednw cwqnvceuiwv TWTR",
         category:"Shopping list"
     },
@@ -13,7 +13,8 @@ export var Carddata = [
 
     {
         name: "Shopify Inc",
-        description: "trtretgt ger vgrsddsc sc chickednwrfewrg cwqnvceuiwv SHOP",
+        category:"Shopping list",
+        description: "trtretgt ger vgrsddsc sc chickednwrfewrg cwqnvceuiwv SHOP  trtretgt ger vgrsddsc sc chickednwrfewrg cwqnvceuiwv SHO trtretgt ger vgrsddsc sc chickednwrfewrg cwqnvceuiwv SHOtrtretgt ger vgrsddsc sc chickednwrfewrg cwqnvceuiwv SHOtrtretgt ger vgrsddsc sc chickednwrfewrg cwqnvceuiwv SHOervwe 3rfog  h48fg 348 g8g845hg4fg83g ",
         category:"Shopping list",
     },
 
