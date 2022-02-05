@@ -1,184 +1,81 @@
-import {React, useState} from "react";
-import { PropTypes } from "prop-types";
-import Backdrop from "../components/Backdrop";
-import Modal from "../components/Modal";
-import Button from "../components/button";
-import { Carddata } from "../jsondata/cards";
+import React from "react";
+import Card from "../components/card";
+import { Carddata } from "../jsondata/Json";
+import { Categorydata } from "../jsondata/Json";
+import Sidebar from "../components/sidebar";
+import Navbar from "../components/navbar";
+import Category from "../components/category";
 
-export default function Page(){
 
 
-    const mystyle = {
-        padding :"20px",
-        
-    }
-    const cardstyle ={
-        "overflow-y":"scroll",
-        height:"91.8vh",
-        margin:"13px",
-        padding:"20px",
-        "WebkitFlex": "1",
-        "msFlex": "1",
-        flex: "1",
-
+class Page extends React.Component {
+    
+    constructor(props) {
+        super(props);
+        this.state = {
+          category: Categorydata[0].name,
+          categories:Categorydata,
+          cards:Carddata
+        };
     }
 
-    const   [newTask, setNewTask] = useState(false);
+    saveStateToLocalStorage = () => { 
+        localStorage.setItem('state', JSON.stringify(this.state)); 
+    } 
 
-    function showNewTaskbox(){
-      setNewTask(true);
+    handleChange=(category)=>{
+        this.setState({category:category})
     }
 
-    function AddCard(props){
 
-        const buttonstyle ={
-            margin:"3px",
-            width:"60px",
+    render() {
+        const cardstyle ={
+            "overflow-y":"scroll",
+            height:"91.8vh",
+            margin:"13px",
+            padding:"20px",
             "WebkitFlex": "1",
             "msFlex": "1",
-            flex: "1" ,
-
+            flex: "1" 
         }
-        const addbtn = {
-            'max-width': '50px',
-            'max-length': '50px',
-            height: '50px',
-            'background-color': 'grey',
-            /* Center vertically and horizontally */
-            position: 'absolute',
-            top: '50%',
-            left: '50%',
-            margin: '-25px 0 0 -25px',
 
+        let category = this.state.category;
+
+
+        let cards =[]
+        for (let i=0;i<Carddata.length;i++){
+            if (category == Carddata[i].category){
+                cards.push(
+                    <div className="col-md-4">
+                        <Card title={Carddata[i].name} description={Carddata[i].description}/>
+                    </div>
+                )
+            }
         }
-    
-        return(
-            <div className="card text-white mx-3 bg-dark mb-2 box-shadow " style={buttonstyle}>
-            <div className="card-header" >
-            </div>
-            <div className="card-body">
-                <div className="container">
-                    <button style={addbtn}  onClick = {showNewTaskbox} >+</button>
-                </div>
-            </div>
-            <div className="card-footer" >
-            {/* {modalIsOpen && <Backdrop onClick = {closeModalHandeler}/>} */}
-            </div>
-        </div>
-    );
-}
 
-const addbtn = {
-    width: '50px',
-    height: '50px',
-    'background-color': 'grey',
-    /* Center vertically and horizontally */
-    top: '50%',
-    left: '50%',
-    margin: '-25px 0 0 -25px',
-    'min-width': '500px',
-    'max-width': '600px',
-}
+        let categories = [] 
 
-    return(
-        <>
-        <div className="card" style={cardstyle}>
-            <div className="row">
-                {Carddata.map((data,key)=>{
-                    return(
-                        <div className="col-md-3" id='acard'>
-                            <Card /*title={data.name} description={data.description}*/ />
-                        </div> 
-                    );
-                })}
-                {newTask &&
-                 <div className="col-md-3">
-                    <Card />
-                </div>}
-                <AddCard className="col-md-3" id='newtask'/>
-            </div>
-            
-      </div>
-       
-        </>
-
-    );
-}
-
-
-
-
-function Card(props){
-    const buttonstyle ={
-        margin:"3px",
-    }
-
-    const  descriptionstyle ={
-        "overflow-y":"scroll",
-        height:"90px",
-
-    }
-
-    const titlestyle={
-        "overflow-y":"scroll",
-        height:"25px",
-    }
-
-    const strike = {
-        position: 'absolute',
-        width: '100%',
-        'border-top': '1px solid red',
-        left: 0,
-        top: '50%'
-    }
-
-
-
-function Strike(){
-
-    {Carddata.map((data,key)=>{
-        return(
-            document.getElementById(key).style.cssText = 'text-decoration: line-through'
-        );  
-    })}
-      
-}
-
-function strikeIfTrue(){
-
-    {Carddata.map((data,key)=>{
-        if(data.state == true){
-            <div className="col-md-3" id={key}>
-                <Strike />
-            </div> 
+        for(let i=0; i<Categorydata.length;i++){
+            categories.push(
+                <Category onClick={()=>this.handleChange(Categorydata[i].name)} category={Categorydata[i].name} />
+            )
         }
-    })}
-}
-    return(
-            <div className="card text-white bg-dark mb-3 box-shadow text-decoration-line">
-                <div className="card-header" >
-                    <h5 className="card-title hidescroll" style={titlestyle}>{props.title}</h5>
-                </div>
-                <div className="card-body">
-                <p className="card-text hidescroll" style={descriptionstyle}>{props.description}</p>
-                </div>
-                <div className="card-footer">
+        
+        return (
+            <>
+            <Navbar/>
+            <section>
+                <Sidebar onClick={this.saveStateToLocalStorage} categories={categories} className="sidebar"/>
+                <div className="card" style={cardstyle}>
                 <div className="row">
-                    <Button className="btn btn-sm btn-success" onClick = {strikeIfTrue}  name="DONE" style={buttonstyle} />
-                    <Button className="btn btn-sm btn-warning" name="EDIT" style={buttonstyle}/>
-                    <Button className="btn btn-sm btn-danger"   name="DELETE" style={buttonstyle}/>
+                    {cards}
                 </div>
-                {/* {modalIsOpen && <Backdrop onClick = {closeModalHandeler}/>} */}
                 </div>
-            </div>
-
-    );
+            </section>
+            </>
+        );
+    }
 }
 
-Card.propTypes = {title: PropTypes.string,
-    aboutText: PropTypes.string}
+export default Page 
 
-Card.defaultProps = {
-title: "Task Name",
-description: "Task Description"
-}
