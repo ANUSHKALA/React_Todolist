@@ -3,7 +3,7 @@ export var Carddata = [
         name: "Twitter Inc erg ewgte gerg ewgetgtwergt erg erg tergetg wqrgewrg erger",
         description: "sddsc sc chickednw cwqnvceuiwv TWTR",
         category:"Shopping list",
-        state: "false",
+        state: "true",
     },
 
     {

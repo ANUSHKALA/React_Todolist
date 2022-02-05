@@ -138,7 +138,7 @@ function Strike(){
 
     {Carddata.map((data,key)=>{
         return(
-            document.getElementById(key).style.cssText = 'text-decoration: line-through'
+            document.getElementById('a').style.cssText = 'text-decoration: line-through'
         );  
     })}
       
@@ -148,7 +148,7 @@ function strikeIfTrue(){
 
     {Carddata.map((data,key)=>{
         if(data.state == true){
-            <div className="col-md-3" id={key}>
+            <div className="col-md-3" id='a'>
                 <Strike />
             </div> 
         }
