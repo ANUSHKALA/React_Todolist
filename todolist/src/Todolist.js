@@ -14,9 +14,6 @@ export default function Todolist(){
             <Sidebar className="sidebar"/>
             <Page className="mainpage"/>
           </section>
-
-
-
         </>
 
     );
