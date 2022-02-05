@@ -1,4 +1,4 @@
-export const Carddata = [
+export var Carddata = [
 
     {
 
