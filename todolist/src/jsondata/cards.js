@@ -15,7 +15,7 @@ export var Carddata = [
         name: "Shopify Inc",
         category:"Shopping list",
         description: "trtretgt ger vgrsddsc sc chickednwrfewrg cwqnvceuiwv SHOP  trtretgt ger vgrsddsc sc chickednwrfewrg cwqnvceuiwv SHO trtretgt ger vgrsddsc sc chickednwrfewrg cwqnvceuiwv SHOtrtretgt ger vgrsddsc sc chickednwrfewrg cwqnvceuiwv SHOtrtretgt ger vgrsddsc sc chickednwrfewrg cwqnvceuiwv SHOervwe 3rfog  h48fg 348 g8g845hg4fg83g ",
-        category:"Shopping list",
+        category:"Studies",
     },
 
     {
@@ -27,13 +27,13 @@ export var Carddata = [
     {
         name: "Adobe Inc",
         description: "xxx w fqrfgqrgv sddsc sc chickednw cwqnvceuiwv ADBE",
-        category:"Shopping list",
+        category:"Category 3",
     },
 
     {
         name: "HubSpot Inc",
         description: "zxzxc wfvrg sddsc sc chickednw cwqnvceuiwv HUBS",
-        category:"Shopping list",
+        category:"Category 3",
     },
 
 ];
