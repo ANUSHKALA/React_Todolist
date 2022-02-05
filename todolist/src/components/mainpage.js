@@ -54,30 +54,6 @@ function Card(props){
         margin:"3px",
     }
 
-<<<<<<< HEAD
- function buttonHandler(){
-         setModatIsOpen(true);
-       }
-    
-//  function closeModalHandeler(){
-//          setModatIsOpen(false);
-//      }
-
-function doneHandler(){
-    {Carddata.map((data,key)=>{
-        return(
-            setTaskIsDone(data.state)
-        );
-    })}
-    }
-    
-
-const  [modalIsOpen, setModatIsOpen] = useState(false);
-const  [taskIsDone, setTaskIsDone] = useState(true);
-
-
-||||||| b060ef3
-=======
     const  descriptionstyle ={
         "overflow-y":"scroll",
         height:"90px",
@@ -89,7 +65,6 @@ const  [taskIsDone, setTaskIsDone] = useState(true);
         height:"25px",
     }
 
->>>>>>> 93dd80a61863468c755f2f3d98ee9cf66750de2c
     return(
             <div className="card text-white bg-dark mb-3 box-shadow">
                 <div className="card-header" >
@@ -100,9 +75,9 @@ const  [taskIsDone, setTaskIsDone] = useState(true);
                 </div>
                 <div className="card-footer">
                 <div className="row">
-                    <Button className="btn btn-sm btn-success" onClick = {doneHandler} name="DONE" style={buttonstyle} />
+                    <Button className="btn btn-sm btn-success"  name="DONE" style={buttonstyle} />
                     <Button className="btn btn-sm btn-warning" name="EDIT" style={buttonstyle}/>
-                    <Button className="btn btn-sm btn-danger" onClick = {buttonHandler}  name="DELETE" style={buttonstyle}/>
+                    <Button className="btn btn-sm btn-danger"   name="DELETE" style={buttonstyle}/>
 
                 </div>
                 {/* {modalIsOpen && <Backdrop onClick = {closeModalHandeler}/>} */}
