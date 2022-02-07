@@ -12,7 +12,7 @@ class Sidebar extends React.Component{
         super(props);
         this.state = {
             thiscategory:1,
-            category: [],
+            category: []
         };
     }
 
@@ -39,27 +39,43 @@ class Sidebar extends React.Component{
         
     }
 
+    handleEdit(category){
+        document.getElementById(category.id).style.display = "block";
+        document.getElementById("category"+category.id).style.display = "none";  
+
+    }
+    
+
     render(){
         const buttonstyle ={
-            "margin-top":"6px",
-            "margin-left" : "13px"
+            marginBottom:"30px",
+            marginTop:"6px",
+            marginLeft : "13px"
         }
         const sidebarstyle = {
-            width: "180px",
+            width: "200px",
             minHeight: "100%",
         }
 
         const addCategory=()=>{
-            document.getElementById("addcategory").style.visibility = "visible";
-            document.getElementById("addbutton").style.visibility = "hidden";           
+            document.getElementById("categoryform").style.display = "block";
+            document.getElementById("addbutton").style.display = "none";          
         }
 
         let categories = [] 
 
         for(let i=0; i<this.state.category.length;i++){
             categories.push(
-                <Category onClick={()=>this.handleCategoryChange(this.state.category[i].id)} category={this.state.category[i].name} />
-              
+                <div >
+                    <div className="categorybox" id={"category"+this.state.category[i].id}>
+                        <section>
+                            <Category onClick={()=>this.handleCategoryChange(this.state.category[i].id)} category={this.state.category[i].name} />
+                            <Button className="btn btn-sm btn-outline-secondary" id={"editbutton"+this.state.category[i].id}  name="Edit" onClick={()=>this.handleEdit(this.state.category[i])} />
+                        </section>
+                    </div>
+                    <CategoryForm head={"Rename "+this.state.category[i].name} name="SAVE" id={this.state.category[i].id} defaultvalue={this.state.category[i].name}/>
+                </div>
+                
             )
         }
 
@@ -68,10 +84,11 @@ class Sidebar extends React.Component{
             <div className="d-flex flex-column flex-shrink-0 p-1 text-white bg-dark"  style={sidebarstyle}>
                 <hr/>
                 <ul className="nav nav-pills flex-column mb-auto">
-                <li><p className="nav-link text-white"><strong>CATEGORIES</strong></p></li>
-                    {categories}
+                <li><h5 className="nav-link text-white"><strong>CATEGORIES</strong></h5></li>
+    
                     <Button onClick={()=>addCategory()} id="addbutton" className="btn btn-sm btn-outline-info" name="ADD MORE" style={buttonstyle}/>
-                    <CategoryForm id="addcategory" style={{"visibility":"hidden"}}/>
+                    <CategoryForm head="ADD MORE" name="ADD" id="categoryform"/>
+                    {categories}
                 </ul>
                 <hr/>
             </div>

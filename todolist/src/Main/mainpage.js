@@ -2,12 +2,7 @@ import React from "react";
 import Card from "../components/card";
 import Sidebar from "../components/sidebar";
 import Navbar from "../components/navbar";
-import Category from "../components/category";
 import axios from 'axios';
-import Button from "../components/button";
-import CategoryForm from "../components/categoryform";
-import ReactDOM  from "react";
-
 
 
 export function updateCategorystate(thiscategory) {
