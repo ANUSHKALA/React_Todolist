@@ -89,5 +89,6 @@ def categoryUpdate(request,pk):
 @api_view(['DELETE'])
 def categoryDelete(request,pk):
     category = Category.objects.get(id=pk)
+    Tasklist.objects.filter(category=category).delete()
     category.delete()
     return Response("Category succesfully deleted!")

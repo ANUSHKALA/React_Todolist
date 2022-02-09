@@ -1,13 +1,15 @@
 import React from "react";
 import Card from "../components/card";
-// import { this.state.task } from "../jsondata/Json";
-// import { this.state.category } from "../jsondata/Json";
 import Sidebar from "../components/sidebar";
 import Navbar from "../components/navbar";
-import Category from "../components/category";
 import axios from 'axios';
 import PropTypes from 'prop-types';
 import AddTaskPopup from "../components/AddTaskPopup";
+
+
+export function updateCategorystate(thiscategory) {
+    this.setState({thiscategory : thiscategory})
+}
 
 class Page extends React.Component {
     
@@ -16,9 +18,9 @@ class Page extends React.Component {
         this.state = {
             thiscategory:1,
             category: [],
-            task : [],
-            show : false,  
-        };
+            task : []
+        }
+        updateCategorystate = updateCategorystate.bind(this)
     }
 
 
@@ -60,13 +62,6 @@ class Page extends React.Component {
     }
 
 
-    handleChange=(category)=>{
-        this.setState({thiscategory:category})
-    }
-
-
-
-
     render() {
         const cardstyle ={
             "overflow-y":"scroll",
@@ -88,9 +83,6 @@ class Page extends React.Component {
 
         let category = this.state.thiscategory;
 
-        let show = this.state.show;
-
-
         let cards =[]
         for (let i=0;i<this.state.task.length;i++){
             if (category === this.state.task[i].category){
@@ -101,24 +93,13 @@ class Page extends React.Component {
                 )
             }
         }
-
-        let categories = [] 
-
-        for(let i=0; i<this.state.category.length;i++){
-            categories.push(
-                <Category onClick={()=>this.handleChange(this.state.category[i].id)} category={this.state.category[i].name} />
-            )
-        }
-
-        
-
         
         return (
             <>
 
             <Navbar/>
             <section>
-                <Sidebar onClick={this.saveStateToLocalStorage} categories={categories} className="sidebar"/>
+                <Sidebar  className="sidebar"/>
                 <div className="card" style={cardstyle}>
                 <div className="row">   
                 <button className='btn btn-primary mx-3' style={btn} type="primary" onClick={()=>this.handleShow(this.state.show)} /*onClick={()=>this.handleAddTask()}*/ > + </button>
