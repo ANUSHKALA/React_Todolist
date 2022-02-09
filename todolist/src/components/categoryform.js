@@ -24,12 +24,12 @@ class CategoryForm extends React.Component {
 
             if (id != "categoryform"){
                 axios.post('http://localhost:8000/category-update/'+id+"/", { name : this.state.name })
-                .then(res => {})
+                .then(res => {window.location.reload(false);})
             }
             else{
             
                 axios.post('http://localhost:8000/category-create/', { name : this.state.name })
-                .then(res => {})
+                .then(res => {window.location.reload(false);})
             }
         }
         else{
