@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import '../CSS/popup.css' 
 
 
@@ -42,6 +41,5 @@ function AddTaskPopup(props) {
 
 }
 
-AddTaskPopup.propTypes = {};
 
 export default AddTaskPopup;
