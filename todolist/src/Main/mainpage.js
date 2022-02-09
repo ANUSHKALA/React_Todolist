@@ -12,6 +12,8 @@ export function updateCategorystate(thiscategory) {
 }
 
 class Page extends React.Component {
+
+    rooturl = "http://localhost:8000"
     
     constructor(props) {
         super(props);
@@ -28,7 +30,7 @@ class Page extends React.Component {
   
         let data ;
 
-        axios.get('http://localhost:8000/category-list/')
+        axios.get(this.rooturl+'/category-list/')
         .then(res => {
             data = res.data;
             this.setState({
@@ -40,7 +42,7 @@ class Page extends React.Component {
         })
      
   
-        axios.get('http://localhost:8000/task-list/')
+        axios.get(this.rooturl+'/task-list/')
         .then(res => {
             data = res.data;
             this.setState({
@@ -59,6 +61,13 @@ class Page extends React.Component {
     }
     handleDontShow=()=>{
         this.setState({show : false});
+    }
+
+    handleDelete=(id,category)=>{
+        axios.delete(this.rooturl+'/task-delete/'+id+"/")
+        .then(res =>{
+            window.location.reload(false);
+        });
     }
 
 
@@ -84,11 +93,12 @@ class Page extends React.Component {
         let category = this.state.thiscategory;
 
         let cards =[]
-        for (let i=0;i<this.state.task.length;i++){
-            if (category === this.state.task[i].category){
+        const task = this.state.task
+        for (let i=0;i<task.length;i++){
+            if (category === task[i].category){
                 cards.push(
                     <div className="col-md-4">
-                        <Card title={this.state.task[i].title} description={this.state.task[i].description}/>
+                        <Card onDelete={()=>this.handleDelete(task[i].id,task[i].category)} title={task[i].title} description={task[i].description}/>
                     </div>
                 )
             }
