@@ -8,7 +8,7 @@ import AddTaskPopup from "../components/AddTaskPopup";
 
 
 export function updateCategorystate(thiscategory) {
-    this.setState({thiscategory : thiscategory})
+    this.setState({thiscategory : thiscategory.id, thiscategoryname : thiscategory.name})
 }
 
 class Page extends React.Component {
@@ -18,7 +18,8 @@ class Page extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            thiscategory:1,
+            thiscategory:"",
+            thiscategoryname:"",
             category: [],
             task : []
         }
@@ -34,6 +35,8 @@ class Page extends React.Component {
         .then(res => {
             data = res.data;
             this.setState({
+                thiscategory : data[0].id,
+                thiscategoryname:data[0].name,
                 category : data    
             });
         })
@@ -81,14 +84,14 @@ class Page extends React.Component {
             "msFlex": "1",
             flex: "1" }
 
-            const btn = {
-                font: 'inherit',
-                cursor: 'pointer',
-                height: '40px',
-                'background-color': 'black',
-                top: '120px',
-                'position': 'relative'
-              }
+        const btn = {
+            font: 'inherit',
+            cursor: 'pointer',
+            height: '40px',
+            'background-color': 'black',
+            top: '0px',
+            'position': 'relative'
+        }
 
         let category = this.state.thiscategory;
 
@@ -106,16 +109,18 @@ class Page extends React.Component {
         
         return (
             <>
-
             <Navbar/>
             <section>
                 <Sidebar  className="sidebar"/>
                 <div className="card" style={cardstyle}>
-                <div className="row">   
-                <button className='btn btn-primary mx-3' style={btn} type="primary" onClick={()=>this.handleShow(this.state.show)} /*onClick={()=>this.handleAddTask()}*/ > + </button>
-                    {cards} 
-                    <AddTaskPopup trigger={this.state.show} setTrigger={()=>this.handleDontShow(this.state.show)} />          
-                </div>
+                <section>
+                <h4>{this.state.thiscategoryname}</h4>
+                <button className='btn btn-lg btn-primary' style={btn}  onClick={()=>this.handleShow(this.state.show)} > + </button>
+                </section>
+                    <div className="row">   
+                     {cards}         
+                    </div>
+                    <AddTaskPopup trigger={this.state.show} setTrigger={()=>this.handleDontShow(this.state.show)} />  
                 </div>
             </section>
             </>

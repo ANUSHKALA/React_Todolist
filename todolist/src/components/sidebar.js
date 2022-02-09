@@ -69,7 +69,7 @@ class Sidebar extends React.Component{
                 <div >
                     <div className="categorybox" id={"category"+this.state.category[i].id}>
                         <section>
-                            <Category onClick={()=>this.handleCategoryChange(this.state.category[i].id)} category={this.state.category[i].name} />
+                            <Category onClick={()=>this.handleCategoryChange(this.state.category[i])} category={this.state.category[i].name} />
                             <Button className="btn btn-sm btn-outline-secondary" id={"editbutton"+this.state.category[i].id}  name="Edit" onClick={()=>this.handleEdit(this.state.category[i])} />
                         </section>
                     </div>
