@@ -34,14 +34,34 @@ export default function Modal(props){
       }
 
 
-    var btn2 = {
+      var btn2 = {
         'background-color': 'transparent',
         color: '#800040'
       }
       
+      var modal =  {
+        'box-shadow': '0 1px 4px rgba(0, 0, 0, 0.2)',
+        'border-radius': '6px',
+        'background-color': 'white',
+        padding: '1rem',
+        'text-align': 'center',
+        width: '30rem',
+        'z-index': 10,
+        position: 'fixed',
+        top: '20vh',
+        left: 'calc(50% - 15rem)',
+      }
+
+      var card = {
+        'background-color': 'white',
+        'border-radius': '4px',
+        'box-shadow': '0 1px 4px rgba(0, 0, 0, 0.2)',
+        padding: '1rem',
+        width: '20rem',
+      }
 
     return(
-        <div className = 'modal' style = {popup}>
+        <div className = 'modal' style = {modal}>
         <p>Are you sure??</p>
         <button style = {btn1} className = 'btn btn--alt' onClick = {cancelHandeler} >Cancel</button>
         <button style = {btn2} className = 'btn' onClick = {confirmHandeler}>Confirm</button>

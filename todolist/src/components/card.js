@@ -19,6 +19,8 @@ export default function Card(props){
     
 
     return(
+        <>
+        
             <div className="card text-white bg-dark mb-3 box-shadow">
                 <div className="card-header" >
                     <h5 className="card-title hidescroll" style={titlestyle}>{props.title}</h5>
@@ -34,6 +36,11 @@ export default function Card(props){
                 </div>
                 </div>
             </div>
+        
+        </>
+
 
     );
 }
+
+

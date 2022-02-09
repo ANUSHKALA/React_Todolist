@@ -1,9 +1,8 @@
 import {React, useState} from "react";
 import { PropTypes } from "prop-types";
-import Backdrop from "./Backdrop";
-import Modal from "./Modal";
 import Button from "./button";
 import { Carddata } from "../jsondata/cards";
+import PropTypes from 'prop-types'
 
 export default function Page(){
 
@@ -138,6 +137,7 @@ function Strike(){
 
     {Carddata.map((data,key)=>{
         return(
+            
             document.getElementById('a').style.cssText = 'text-decoration: line-through'
         );  
     })}
@@ -147,11 +147,7 @@ function Strike(){
 function strikeIfTrue(){
 
     {Carddata.map((data,key)=>{
-        if(data.state == true){
-            <div className="col-md-3" id='a'>
-                <Strike />
-            </div> 
-        }
+
     })}
 }
     return(
@@ -181,4 +177,12 @@ Card.propTypes = {title: PropTypes.string,
 Card.defaultProps = {
 title: "Task Name",
 description: "Task Description"
+}
+
+Navbar.propTypes = {title: PropTypes.string,
+    aboutText: PropTypes.string}
+
+Navbar.defaultProps = {
+title: "Text Moderations",
+aboutText: "About this page"
 }
