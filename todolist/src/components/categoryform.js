@@ -63,7 +63,7 @@ class CategoryForm extends React.Component {
 
         const buttonstyle ={
             "margin-left" : "13px",
-            "margin-top" : "5px"
+            "margin-top" : "5px",
         }
 
         return (

@@ -4,6 +4,7 @@ import CategoryForm from "./categoryform";
 import axios from 'axios';
 import Category from "./category";
 import { updateCategorystate } from "../Main/mainpage";
+import { setTaskCategory } from "./AddTaskPopup";
 
 
 class Sidebar extends React.Component{
@@ -18,6 +19,7 @@ class Sidebar extends React.Component{
 
     handleCategoryChange=(category)=>{
         updateCategorystate(category)
+        setTaskCategory(category)
     }
 
 

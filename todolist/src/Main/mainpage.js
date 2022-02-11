@@ -89,8 +89,9 @@ class Page extends React.Component {
             cursor: 'pointer',
             height: '40px',
             'background-color': 'black',
-            top: '0px',
-            'position': 'relative'
+            top: '80px',
+            right: '40px',
+            position: 'fixed'
         }
 
         let category = this.state.thiscategory;
