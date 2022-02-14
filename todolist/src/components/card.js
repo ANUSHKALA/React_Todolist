@@ -31,12 +31,11 @@ export default function Card(props){
                 <div className="card-footer">
                 <div className="row">
                     <Button className="btn btn-sm btn-success" name="DONE" style={buttonstyle} />
-                    <Button className="btn btn-sm btn-warning" name="EDIT" style={buttonstyle}/>
+                    <Button onClick={props.onEdit()} className="btn btn-sm btn-warning" name="EDIT" style={buttonstyle}/>
                     <Button onClick={props.onDelete} className="btn btn-sm btn-danger"  name="DELETE" style={buttonstyle}/>
                 </div>
                 </div>
             </div>
-        
         </>
 
 

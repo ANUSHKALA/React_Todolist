@@ -5,11 +5,13 @@ import Navbar from "../components/navbar";
 import axios from 'axios';
 import PropTypes from 'prop-types';
 import AddTaskPopup from "../components/AddTaskPopup";
+import EditTaskPopup from "../components/EditTaskPopup";
 
 
 export function updateCategorystate(thiscategory) {
-    this.setState({thiscategory : thiscategory.id, thiscategoryname : thiscategory.name})
+    this.setState({thiscategory : thiscategory.id, thiscategoryname : thiscategory.name, })
 }
+
 
 class Page extends React.Component {
 
@@ -21,9 +23,12 @@ class Page extends React.Component {
             thiscategory:"",
             thiscategoryname:"",
             category: [],
-            task : []
+            task : [],
+            check : false,
+            show: false,
+            edit: false,
         }
-        updateCategorystate = updateCategorystate.bind(this)
+        updateCategorystate = updateCategorystate.bind(this);
     }
 
 
@@ -64,6 +69,19 @@ class Page extends React.Component {
     }
     handleDontShow=()=>{
         this.setState({show : false});
+        this.setState({edit : false});
+    }
+
+    handleEdit=(id)=>{
+
+        axios.delete(this.rooturl+'/task-delete/'+id+"/")
+        .then(res =>{
+            window.location.reload(false);
+        });
+
+        this.setState({edit : true});
+
+
     }
 
     handleDelete=(id,category)=>{
@@ -74,7 +92,14 @@ class Page extends React.Component {
     }
 
 
+    
+
+
     render() {
+
+
+        
+
         const cardstyle ={
             "overflow-y":"scroll",
             height:"91.8vh",
@@ -96,13 +121,15 @@ class Page extends React.Component {
 
         let category = this.state.thiscategory;
 
+
+
         let cards =[]
         const task = this.state.task
         for (let i=0;i<task.length;i++){
             if (category === task[i].category){
                 cards.push(
                     <div className="col-md-4">
-                        <Card onDelete={()=>this.handleDelete(task[i].id,task[i].category)} title={task[i].title} description={task[i].description}/>
+                        <Card id='card' onDelete={()=>this.handleDelete(task[i].id,task[i].category)} onEdit={() => this.handleEdit} title={task[i].title} description={task[i].description}/>
                     </div>
                 )
             }
@@ -119,9 +146,13 @@ class Page extends React.Component {
                 <button className='btn btn-lg btn-primary' style={btn}  onClick={()=>this.handleShow(this.state.show)} > + </button>
                 </section>
                     <div className="row">   
-                     {cards}         
+                     {cards} 
+        
                     </div>
+
+                    <EditTaskPopup trigger={this.state.edit} setTrigger={()=>this.handleDontShow(this.state.edit)} />
                     <AddTaskPopup trigger={this.state.show} setTrigger={()=>this.handleDontShow(this.state.show)} />  
+ 
                 </div>
             </section>
             </>

@@ -36,7 +36,7 @@ class CategoryForm extends React.Component {
             console.log("Not valid input")
         }
     }
-
+    
     cancelButton=(id)=>{
         document.getElementById(id).style.display= "none";
         document.getElementById("addbutton").style.display = "block";

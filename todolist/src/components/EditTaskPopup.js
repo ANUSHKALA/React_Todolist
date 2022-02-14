@@ -17,7 +17,7 @@ export function setTaskCategory(thiscategory) {
     this.setState({cat:thiscategory.id});
 }
 
-class AddTaskPopup extends React.Component{
+class EditTaskPopup extends React.Component{
 
     constructor(props) {
         super(props);
@@ -26,6 +26,14 @@ class AddTaskPopup extends React.Component{
             cat:1,
         }
         setTaskCategory = setTaskCategory.bind(this)
+    }
+
+
+    handleDelete=(cat,category)=>{
+        axios.delete(this.rooturl+'/task-delete/'+cat+"/")
+        .then(res =>{
+            window.location.reload(false);
+        });
     }
 
 
@@ -52,6 +60,10 @@ class AddTaskPopup extends React.Component{
             console.log(res);
             window.location.reload(false);})
 
+
+            document.getElementById('edit').onClick (
+                this.handleDelete()
+             );
     }
 
 
@@ -68,14 +80,11 @@ class AddTaskPopup extends React.Component{
             //console.log(check);
     
         }
-    
-
-
-
- 
-
-
-
+        // document.getElementById('edit').onclick(
+        //     console.log('hyyyyy')
+        //     //do stuff...
+        //     // handleDelete();
+        // )
     
             return(this.props.trigger) ? (
                 <>
@@ -86,20 +95,21 @@ class AddTaskPopup extends React.Component{
                 <div className='popup-inner'>
                     <button className="close-btn btn-dark" onClick={() => this.props.setTrigger()}>x</button>
                     <form>
+                        <h3>Edit Task</h3>
                         <div className="form-group">
                             <label>Task</label>
-                                <input id='tsknm' className="form-control" /*id="exampleInputEmail1"*/ aria-describedby="emailHelp" placeholder="New task"/>
+                                <input id='tsknm' className="form-control" /*id="exampleInputEmail1"*/ aria-describedby="emailHelp" placeholder="Edit task"/>
                         </div>
                         <div className="form-group">
                             <label >Description</label>
-                            <input id='desc' className="form-control" /*id="exampleInputPassword1"*/ placeholder="about your task"/>
+                            <input id='desc' className="form-control" /*id="exampleInputPassword1"*/ placeholder="Edit task description"/>
                         </div>
                         <div className="form-check">
                             <input id="donecheck" type="checkbox" onChange={() => handleCheck()} className="form-check-input"/>
-                            <label className="form-check-label" >Done</label>
+                            <label className="form-check-label" >check</label>
                         </div>
-                        <button type="button"  onClick={() => this.addTask()} className="btn btn-primary">ADD</button>
-                        
+                        <button type="button"  onClick={() => this.addTask()} id='edit' className="btn btn-success ">SAVE EDIT</button>
+                        <button type="button"  onClick={() => this.props.setTrigger()} className="btn btn-danger mx-4">CANCEL</button>                        
                     </form>
                     {this.props.children}
                 </div>
@@ -117,4 +127,4 @@ class AddTaskPopup extends React.Component{
 }
 
 
-export default AddTaskPopup;
+export default EditTaskPopup;
